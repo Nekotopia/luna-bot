@@ -1,9 +1,9 @@
-package command.commands;
+package com.nekotopia.command.commands;
 
-import Config.CommandManager;
-import Config.Config;
-import command.CommandContext;
-import command.ICommand;
+import com.nekotopia.Config.CommandManager;
+import com.nekotopia.Config.Config;
+import com.nekotopia.command.CommandContext;
+import com.nekotopia.command.ICommand;
 import net.dv8tion.jda.api.entities.TextChannel;
 
 import java.util.Arrays;
@@ -53,7 +53,7 @@ public class HelpCommand implements ICommand {
 
     @Override
     public String getHelp() {
-        return "Show the list with commands in the bot\n" + "Usage: `" + Config.get("prefix") + "help [command]`";
+        return "Show the list with commands in the bot\n" + "Usage: `" + Config.get("prefix") + "help [com.nekotopia.command]`";
     }
 
     @Override

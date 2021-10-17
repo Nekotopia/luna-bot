@@ -1,16 +1,15 @@
-package Config;
+package com.nekotopia.Config;
 
-import command.CommandContext;
-import command.ICommand;
-import command.commands.HelpCommand;
-import command.commands.PingCommand;
+import com.nekotopia.command.CommandContext;
+import com.nekotopia.command.ICommand;
+import com.nekotopia.command.commands.HelpCommand;
+import com.nekotopia.command.commands.PingCommand;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 import java.util.regex.Pattern;
 
 
@@ -25,7 +24,7 @@ public class CommandManager {
     private void addCommand(ICommand cmd) {
         boolean nameFound = this.commands.stream().anyMatch((it) -> it.getName().equalsIgnoreCase(cmd.getName()));
         if (nameFound) {
-            throw new IllegalArgumentException("A command with this name is already present");
+            throw new IllegalArgumentException("A com.nekotopia.command with this name is already present");
         }
 
         commands.add(cmd);

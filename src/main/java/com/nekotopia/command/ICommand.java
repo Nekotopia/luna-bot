@@ -1,6 +1,5 @@
-package command;
+package com.nekotopia.command;
 
-import java.sql.Array;
 import java.util.Arrays;
 import java.util.List;
 

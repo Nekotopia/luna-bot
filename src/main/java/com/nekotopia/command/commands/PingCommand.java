@@ -1,7 +1,7 @@
-package command.commands;
+package com.nekotopia.command.commands;
 
-import command.CommandContext;
-import command.ICommand;
+import com.nekotopia.command.CommandContext;
+import com.nekotopia.command.ICommand;
 import net.dv8tion.jda.api.JDA;
 
 public class PingCommand implements ICommand {

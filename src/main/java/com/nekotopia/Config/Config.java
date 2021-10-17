@@ -1,4 +1,4 @@
-package Config;
+package com.nekotopia.Config;
 
 import io.github.cdimascio.dotenv.Dotenv;
 

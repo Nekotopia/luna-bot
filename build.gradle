@@ -3,7 +3,7 @@ plugins {
     id 'application'
 }
 
-mainClassName = 'com.nekotopia.jda.Bot'
+mainClassName = 'com.nekotopia.Bot'
 group 'org.nekotopia'
 version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
@@ -33,6 +33,14 @@ dependencies {
 
     implementation group: 'com.zaxxer', name: 'HikariCP', version: '3.4.1'
     implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.30.1'
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'com.nekotopia.Bot'
+        )
+    }
 }
 
 compileJava.options.encoding = 'UTF-8'
