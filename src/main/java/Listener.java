@@ -1,4 +1,5 @@
 import me.duncte123.botcommons.BotCommons;
+import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.ReadyEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -9,6 +10,7 @@ import org.slf4j.LoggerFactory;
 public class Listener extends ListenerAdapter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Listener.class);
+    private static final CommandManager manager = new CommandManager();
 
     @Override
     public void onReady(@NotNull ReadyEvent event) {
@@ -19,11 +21,22 @@ public class Listener extends ListenerAdapter {
     public void onGuildMessageReceived(@NotNull GuildMessageReceivedEvent event) {
         String prefix = Config.get("prefix");
         String raw = event.getMessage().getContentRaw();
+        User user = event.getAuthor();
 
-        if(raw.equalsIgnoreCase(prefix + "shutdown") && event.getAuthor().getId().equals(Config.get("owner_id"))) {
+        if(user.isBot() || event.isWebhookMessage()){
+            return;
+        }
+
+        if(raw.equalsIgnoreCase(prefix + "shutdown") && user.getId().equals(Config.get("owner_id"))) {
             LOGGER.info("Shutting down");
             event.getJDA().shutdown();
             BotCommons.shutdown(event.getJDA());
+
+            return;
+        }
+
+        if(raw.startsWith(prefix)){
+            manager.handle(event);
         }
     }
 }
