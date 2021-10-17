@@ -1,5 +1,8 @@
+package Config;
+
 import command.CommandContext;
 import command.ICommand;
+import command.commands.HelpCommand;
 import command.commands.PingCommand;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
@@ -16,6 +19,7 @@ public class CommandManager {
 
     public CommandManager(){
         addCommand(new PingCommand());
+        addCommand(new HelpCommand(this));
     }
 
     private void addCommand(ICommand cmd) {
@@ -27,8 +31,12 @@ public class CommandManager {
         commands.add(cmd);
     }
 
+    public List<ICommand> getCommands() {
+        return commands;
+    }
+
     @Nullable
-    private ICommand getCommand(String search) {
+    public ICommand getCommand(String search) {
         String searchLower = search.toLowerCase();
         for (ICommand command : this.commands) {
             if (command.getName().equals(searchLower) || command.getAliases().contains(searchLower)) {

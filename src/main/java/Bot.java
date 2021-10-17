@@ -1,3 +1,5 @@
+import Config.Config;
+import Config.Listener;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
@@ -20,7 +22,6 @@ public class Bot {
                 .build();
 
     }
-
     public static void main(String[] args) throws LoginException {
         new Bot();
     }

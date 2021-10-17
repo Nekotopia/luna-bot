@@ -9,6 +9,9 @@ public interface ICommand {
 
     String getName();
 
+    String getHelp();
+
+    @SuppressWarnings("ArraysAsListWithZeroOrOneArgument")
     default List<String> getAliases(){
         return Arrays.asList();
     }
