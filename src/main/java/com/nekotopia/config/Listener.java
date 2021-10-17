@@ -1,4 +1,4 @@
-package com.nekotopia.Config;
+package com.nekotopia.config;
 
 import me.duncte123.botcommons.BotCommons;
 import net.dv8tion.jda.api.entities.User;

@@ -1,7 +1,7 @@
 package com.nekotopia;
 
-import com.nekotopia.Config.Config;
-import com.nekotopia.Config.Listener;
+import com.nekotopia.config.Config;
+import com.nekotopia.config.Listener;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;

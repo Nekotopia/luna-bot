@@ -1,7 +1,7 @@
 package com.nekotopia.command.commands;
 
-import com.nekotopia.Config.CommandManager;
-import com.nekotopia.Config.Config;
+import com.nekotopia.config.CommandManager;
+import com.nekotopia.config.Config;
 import com.nekotopia.command.CommandContext;
 import com.nekotopia.command.ICommand;
 import net.dv8tion.jda.api.entities.TextChannel;

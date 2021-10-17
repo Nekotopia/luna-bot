@@ -1,4 +1,4 @@
-package com.nekotopia.Config;
+package com.nekotopia.config;
 
 import com.nekotopia.command.CommandContext;
 import com.nekotopia.command.ICommand;
