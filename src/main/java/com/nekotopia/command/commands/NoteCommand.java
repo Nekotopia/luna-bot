@@ -25,7 +25,6 @@ public class NoteCommand implements ICommand {
         for (int i = 0; i < args.size()-2; i++) {
             note.append(args.get(i)).append(" ");
         }
-        long timeArgs = Long.parseLong(args.get(args.size() - 1));
         String when = args.get(args.size() - 2).toUpperCase();
 
         ScheduledExecutorService ses = Executors.newScheduledThreadPool(1);
@@ -34,7 +33,13 @@ public class NoteCommand implements ICommand {
         ).queue();
         switch (when) {
             case "IN":
-                ses.schedule(task, timeArgs, TimeUnit.SECONDS);
+                try{
+                    long time = Long.parseLong(args.get(args.size() - 1));
+                    ses.schedule(task, time, TimeUnit.SECONDS);
+                }catch(Exception e){
+                    channel.sendMessage("An error occured").queue();
+                    return;
+                }
                 break;
             case "AT":
                 channel.sendMessage("Lunatic note : haven't done it yet ^^'").queue();
