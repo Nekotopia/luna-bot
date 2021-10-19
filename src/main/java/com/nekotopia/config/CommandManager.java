@@ -4,6 +4,7 @@ import com.nekotopia.command.CommandContext;
 import com.nekotopia.command.ICommand;
 import com.nekotopia.command.commands.HelpCommand;
 import com.nekotopia.command.commands.PingCommand;
+import com.nekotopia.command.commands.SetPrefixCommand;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 import javax.annotation.Nullable;
@@ -19,12 +20,13 @@ public class CommandManager {
     public CommandManager(){
         addCommand(new PingCommand());
         addCommand(new HelpCommand(this));
+        addCommand(new SetPrefixCommand());
     }
 
     private void addCommand(ICommand cmd) {
         boolean nameFound = this.commands.stream().anyMatch((it) -> it.getName().equalsIgnoreCase(cmd.getName()));
         if (nameFound) {
-            throw new IllegalArgumentException("A com.nekotopia.command with this name is already present");
+            throw new IllegalArgumentException("A command with this name is already present");
         }
 
         commands.add(cmd);
@@ -45,16 +47,15 @@ public class CommandManager {
         return null;
     }
 
-    void handle(GuildMessageReceivedEvent event) {
+    void handle(GuildMessageReceivedEvent event, String prefix) {
         String[] split = event.getMessage().getContentRaw()
-                .replaceFirst("(?i)" + Pattern.quote(Config.get("prefix")), "")
+                .replaceFirst("(?i)" + Pattern.quote(prefix), "")
                 .split("\\s+");
 
         String invoke = split[0].toLowerCase();
-
         ICommand cmd = this.getCommand(invoke);
 
-        if(cmd != null){
+        if (cmd != null) {
             event.getChannel().sendTyping().queue();
             List<String> args = Arrays.asList(split).subList(1, split.length);
 
