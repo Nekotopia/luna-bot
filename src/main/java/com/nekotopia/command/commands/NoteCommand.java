@@ -55,6 +55,8 @@ public class NoteCommand implements ICommand {
     @Override
     public String getHelp() {
         return "Remind you to do something\n" +
-                "Usage: `!!note <note> IN/AT <time> (IN is in seconds)`";
+                "Usage: `!!note <note> IN/AT <time>\n" +
+                "(IN is in seconds)" +
+                "(AT exemple : 22:33)`";
     }
 }
