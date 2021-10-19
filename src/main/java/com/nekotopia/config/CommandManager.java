@@ -3,6 +3,7 @@ package com.nekotopia.config;
 import com.nekotopia.command.CommandContext;
 import com.nekotopia.command.ICommand;
 import com.nekotopia.command.commands.HelpCommand;
+import com.nekotopia.command.commands.NoteCommand;
 import com.nekotopia.command.commands.PingCommand;
 import com.nekotopia.command.commands.SetPrefixCommand;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
@@ -21,6 +22,7 @@ public class CommandManager {
         addCommand(new PingCommand());
         addCommand(new HelpCommand(this));
         addCommand(new SetPrefixCommand());
+        addCommand(new NoteCommand());
     }
 
     private void addCommand(ICommand cmd) {
